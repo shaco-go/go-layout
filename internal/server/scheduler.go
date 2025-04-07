@@ -20,6 +20,11 @@ func (t *SchedulerServer) Start(ctx context.Context) error {
 		gocron.WithStopTimeout(10*time.Second),
 		gocron.WithGlobalJobOptions(
 			gocron.WithEventListeners(
+				gocron.AfterJobRunsWithPanic(func(jobID uuid.UUID, jobName string, recoverData any) {
+					log.Error().Str("脚本名称", jobID.String()).
+						Any("recover", recoverData).
+						Msg("脚本错误")
+				}),
 				gocron.AfterJobRunsWithError(func(jobID uuid.UUID, jobName string, err error) {
 					log.Error().Str("脚本名称", jobID.String()).
 						Err(err).

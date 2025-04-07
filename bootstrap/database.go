@@ -23,8 +23,6 @@ func InitDB() *gorm.DB {
 	// if g.Conf.GetBool("Debug") && strings.ToLower(g.Conf.GetString("Env")) == "development" {
 	// 	// 迁移数据
 	// 	err := db.AutoMigrate(
-	// 		&model.TbForum{},
-	// 		&model.TbThread{},
 	// 	)
 	// 	if err != nil {
 	// 		panic(err)
@@ -53,11 +51,11 @@ func initMysql(username, password, host string, port int, dbname string) *gorm.D
 		Logger:                                   l,
 		DisableForeignKeyConstraintWhenMigrating: true,
 	})
-	if g.Conf.GetBool("Debug") {
-		db = db.Debug()
-	}
 	if err != nil {
 		panic(fmt.Errorf("数据库连接失败:%w", err))
+	}
+	if g.Conf.GetBool("Debug") {
+		db = db.Debug()
 	}
 	return db
 }
