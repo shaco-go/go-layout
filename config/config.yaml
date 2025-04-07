@@ -1,0 +1,23 @@
+Env: "development"
+Debug: true
+Http:
+  Port: 8080
+Database:
+  Default:
+    Username: ""
+    Password: ""
+    Host: "0.0.0.0"
+    Port: 3306
+    Dbname: ""
+Log:
+  Console:
+    Enable: true
+    Level: "trace"
+  File:
+    Enable: true
+    Level: "debug"
+    Filename: "./logs/app.log"
+    MaxSize: 100
+    MaxAge: 30
+    MaxBackups: 30
+    Compress: true

@@ -1,0 +1,36 @@
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# Node.js
+node_modules/
+npm-debug.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+env/
+venv/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+*.iml
+
+# IDE 文件
+.idea/
+*.sublime-project
+*.sublime-workspace
+.vscode/
+
+# 其他
+*.log
+*.tmp
+*.bak
+*.swp
+*.exe
