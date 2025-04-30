@@ -17,11 +17,15 @@ RUN go build -ldflags="-s -w" -o app .
 
 FROM registry.cn-chengdu.aliyuncs.com/zhzy0518/alpine:3.20.2
 
+ARG ENV_VAR
+
 ENV TZ Asia/Shanghai
+ENV MY_ENV_VAR=${ENV_VAR}
 
 WORKDIR /app
 
-COPY --from=builder /build/config/config.yaml .
+COPY --from=builder /build/config/development.yaml .
+COPY --from=builder /build/config/production.yaml .
 COPY --from=builder /build/app .
 
-CMD ["./app","-c","config.yaml"]
+CMD ./app -c $MY_ENV_VAR
