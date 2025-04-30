@@ -1,4 +1,4 @@
-FROM registry.cn-chengdu.aliyuncs.com/zhzy0518/golang:1.23 AS builder
+FROM crpi-u4133maz63mkibc0.cn-chengdu.personal.cr.aliyuncs.com/shaco-go/golang:1.23.6 AS builder
 
 ENV CGO_ENABLED=0
 ENV GOPROXY=https://goproxy.cn,direct
@@ -15,7 +15,7 @@ COPY . .
 
 RUN go build -ldflags="-s -w" -o app .
 
-FROM registry.cn-chengdu.aliyuncs.com/zhzy0518/alpine:3.20.2
+FROM crpi-u4133maz63mkibc0.cn-chengdu.personal.cr.aliyuncs.com/shaco-go/alpine:3.21.3
 
 ARG ENV_VAR
 
